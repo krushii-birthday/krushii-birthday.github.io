@@ -1,0 +1,6 @@
+{
+  "name": "Aesthetic Birthday Card",
+  "description": "A beautiful, elegant, and aesthetic birthday website dedicated to one special person, featuring smooth transitions, a memory gallery, animated cake, ambient music, and heartfelt wishes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
