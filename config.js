@@ -19,14 +19,14 @@ window.config = {
   // 1. NAME OF THE BIRTHDAY PERSON (Naam)
   // -------------------------------------------------------------------------
   // Example: name: "Sophia",
-  name: "guddu",
+  name: "Krushi",
 
   // -------------------------------------------------------------------------
   // 2. BIRTHDAY DATE (Birthday ki tareekh)
   // -------------------------------------------------------------------------
   // Format must be YYYY-MM-DD. 
   // Example: birthday: "2005-12-25",
-  birthday: "2002-10-18",
+  birthday: "2004-07-16",
 
   // -------------------------------------------------------------------------
   // 3. HEARTFELT MESSAGE (Aapka Pyaar Bhara Message)
@@ -34,7 +34,7 @@ window.config = {
   // This message will type out slowly on the screen like a typewriter.
   // Use "\n\n" to start a new paragraph.
   // Use emojis to make it beautiful!
-  message: "Dearest Iris,\n\nHappy Birthday! 🎂✨\n\nOn this incredibly special day, I wanted to create a little digital sanctuary just for you. You are someone who makes the world infinitely brighter, softer, and more beautiful just by being in it. Your kindness is a gentle breeze, and your laughter is the sweetest melody.\n\nThank you for sharing your light with everyone around you, and for being the wonderful, magical soul that you are. May this year ahead be filled with overflowing peace, gentle adventures, quiet cozy moments, and all the boundless happiness your heart can hold. You deserve the world and so much more.\n\nWith all my warmth and affection,\nAlways ❤️",
+  message: "Dearest Krushi,\n\nHappy Birthday! 🎂✨\n\nOn this incredibly special day, I wanted to create a little digital sanctuary just for you. You are someone who makes the world infinitely brighter, softer, and more beautiful just by being in it. Your kindness is a gentle breeze, and your laughter is the sweetest melody.\n\nThank you for sharing your light with everyone around you, and for being the wonderful, magical soul that you are. May this year ahead be filled with overflowing peace, gentle adventures, quiet cozy moments, and all the boundless happiness your heart can hold. You deserve the world and so much more.\n\nWith all my warmth and affection,\nAlways ❤️",
 
   // -------------------------------------------------------------------------
   // 4. TOTAL PHOTO GALLERY IMAGES (Photo Gallery Size)
