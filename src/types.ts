@@ -10,5 +10,6 @@ export interface AppConfig {
   totalImages: number;
   reasons: string[];
   wishes: Array<{ id: number; wish: string; revealed: boolean }>;
+  moonWish?: string;
   musicUrl: string;
 }

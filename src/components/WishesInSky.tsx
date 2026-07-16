@@ -40,6 +40,14 @@ export default function WishesInSky() {
   });
 
   const [selectedStarId, setSelectedStarId] = useState<number | null>(null);
+  const [moonRevealed, setMoonRevealed] = useState(false);
+  const [moonOpen, setMoonOpen] = useState(false);
+
+  const handleMoonClick = () => {
+    setMoonRevealed(true);
+    setSelectedStarId(null); // close any open star popup
+    setMoonOpen(true);
+  };
 
   const handleStarClick = (id: number) => {
     setSelectedStarId(id);
@@ -80,10 +88,29 @@ export default function WishesInSky() {
         <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Small Crescent Moon */}
-        <div className="absolute top-8 right-10 flex items-center gap-2 text-indigo-200/45 select-none pointer-events-none">
-          <Moon size={28} className="fill-indigo-100/10" />
-        </div>
+        {/* Small Crescent Moon — Clickable */}
+        <motion.button
+          onClick={handleMoonClick}
+          className="absolute top-8 right-10 cursor-pointer select-none"
+          id="moon-wish-btn"
+          title="A secret wish lives in the moon…"
+          whileHover={{ scale: 1.25 }}
+          whileTap={{ scale: 0.9 }}
+          animate={{
+            filter: moonRevealed
+              ? "drop-shadow(0 0 14px rgba(167,139,250,0.95))"
+              : "drop-shadow(0 0 5px rgba(167,139,250,0.35))",
+            rotate: [0, -4, 4, 0],
+          }}
+          transition={{
+            rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <Moon
+            size={30}
+            className={moonRevealed ? "text-violet-300 fill-violet-200/30" : "text-indigo-200/50 fill-indigo-100/10"}
+          />
+        </motion.button>
 
         {/* Background stars (non-interactive tiny pixels) */}
         {Array.from({ length: 40 }).map((_, i) => {
@@ -146,18 +173,19 @@ export default function WishesInSky() {
         ))}
 
         {/* Overlay showing instruction when sky is empty of open wishes */}
-        {!selectedStarId && (
+        {!selectedStarId && !moonOpen && (
           <div className="absolute inset-x-0 bottom-6 text-center select-none pointer-events-none">
             <span className="font-mono text-[10px] text-indigo-300/60 uppercase tracking-widest animate-pulse">
-              ★ Tap any shining star ★
+              ★ Tap any star or the moon ★
             </span>
           </div>
         )}
 
         {/* Modal Reveal Container inside the sky box */}
         <AnimatePresence>
-          {selectedStar && (
+          {selectedStar && !moonOpen && (
             <motion.div
+              key="star-popup"
               initial={{ opacity: 0, scale: 0.9, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -188,6 +216,44 @@ export default function WishesInSky() {
               <div className="flex items-center justify-end text-[10px] text-pink-400 gap-1.5 mt-3 select-none">
                 <span>With Love</span>
                 <Heart size={10} className="fill-pink-400" />
+              </div>
+            </motion.div>
+          )}
+
+          {/* Moon Wish Popup */}
+          {moonOpen && (
+            <motion.div
+              key="moon-popup"
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 10 }}
+              className="absolute inset-x-4 bottom-4 md:inset-x-8 md:bottom-8 p-6 bg-indigo-950/70 backdrop-blur-md border border-violet-400/20 rounded-2xl flex flex-col justify-between"
+              id="moon-wish-popup"
+            >
+              {/* Top Row */}
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-serif italic text-violet-300 text-xs tracking-widest uppercase flex items-center gap-1.5">
+                  <Moon size={14} className="fill-violet-300/40" /> Moon's Secret Wish
+                </span>
+                <button
+                  onClick={() => setMoonOpen(false)}
+                  className="p-1 text-slate-400 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+                  title="Close Moon Wish"
+                  id="close-moon-popup-btn"
+                >
+                  Close
+                </button>
+              </div>
+
+              {/* Message text */}
+              <p className="font-sans text-sm sm:text-base text-violet-100 font-medium leading-relaxed italic pr-6 select-text">
+                "{config.moonWish ?? 'The moon shines brightest just for you. 🌙'}"
+              </p>
+
+              {/* Micro love details */}
+              <div className="flex items-center justify-end text-[10px] text-violet-400 gap-1.5 mt-3 select-none">
+                <span>From the Moon, With Love</span>
+                <Heart size={10} className="fill-violet-400" />
               </div>
             </motion.div>
           )}

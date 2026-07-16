@@ -33,6 +33,8 @@ export const config: AppConfig = {
     { id: 8, wish: "I wish that any obstacles you face turn into beautiful stepping stones for your soul.", revealed: false }
   ],
 
+  moonWish: "🌙 If the stars are my wishes, then you're my moon—the one they all revolve around. Your presence brings peace, your smile brings light, and your heart makes my world beautiful. Thank you for being the most special person in my life. Happy Birthday, my moon. 🌙💜",
+
   // Beautiful, slow, calming acoustic piano instrumental track (fallback if local file is missing)
   musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
 };
