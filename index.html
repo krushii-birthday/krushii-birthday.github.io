@@ -831,7 +831,7 @@
             <button onclick="toggleMusicMute()" class="p-1.5 rounded-full hover:bg-pink-50 text-pink-600 active:scale-90 transition-all duration-200" title="Mute/Unmute">
               <i id="music-volume-icon" data-lucide="volume-2" class="w-4.5 h-4.5"></i>
             </button>
-            <input id="music-volume-slider" oninput="handleVolumeChange(this.value)" type="range" min="0" max="1" step="0.05" value="0.5" class="w-16 h-1 bg-pink-100 rounded-lg appearance-none cursor-pointer accent-pink-400 focus:outline-none" title="Adjust Volume">
+            <input id="music-volume-slider" oninput="handleVolumeChange(this.value)" type="range" min="0" max="1" step="0.05" value="0.2" class="w-16 h-1 bg-pink-100 rounded-lg appearance-none cursor-pointer accent-pink-400 focus:outline-none" title="Adjust Volume">
           </div>
 
           <!-- Bouncing equalizer bars -->
@@ -896,26 +896,26 @@
         
         // 8 Sweet Reasons
         reasons: [
-          "Your smile brings instant warmth to even the grayest of days. 🌸",
-          "You have a heart of pure gold, treating everyone with deep empathy and kindness. ✨",
-          "How you appreciate the quiet, beautiful little things in life that others might overlook. 🌼",
-          "Your laughter is contagious and has the power to heal and lift up any spirit. 🎵",
-          "You inspire others to be more thoughtful and gentle just by being exactly who you are. ❤️",
-          "The way your eyes light up with passion and wonder when speaking about what you love. 💫",
-          "You carry an innate elegance and a serene, calming presence wherever you go. 🕯️",
-          "Your strength and grace in handling life's complex currents are truly admirable. 🦋"
+          "Your smile has this beautiful way of turning even my ordinary days into something worth remembering. ❤️",
+          "Being around you feels like finding peace after a long, tiring day. You have no idea how comforting your presence is. 🌙",
+          "I love how you find happiness in the smallest little moments. It reminds me that life doesn't have to be perfect to be beautiful. 🌸",
+          "Your laughter is one of my favorite sounds in this world. If I could keep one sound with me forever, it would be yours. ✨",
+          "You make people feel important without even trying, and that's one of the rarest qualities anyone can have. 💖",
+          "The sparkle in your eyes whenever you're genuinely happy is more beautiful than a sky full of stars. ⭐",
+          "No matter where life takes you, I hope you never lose the kindness, warmth, and innocence that make you... you. 🦋",
+          "Out of all the people this world could have given me to know, I'm just grateful it gave me you. 🌹"
         ],
 
         // 8 Interactive Star Wishes
         wishes: [
-          { id: 1, wish: "May your heart always feel safe, cherished, and deeply loved every single day." },
-          { id: 2, wish: "I wish for you to fulfill every single dream you have, no matter how grand or quiet." },
-          { id: 3, wish: "May your path be paved with wonderful adventures, rich laughter, and sincere friendships." },
-          { id: 4, wish: "I wish you endless peaceful mornings wrapped in cozy blankets with a warm cup of tea." },
-          { id: 5, wish: "May you always find the courage to stay true to your unique, wonderful, magical self." },
-          { id: 6, wish: "I wish for your mind to be free of worries, filled only with inspiration and quiet clarity." },
-          { id: 7, wish: "May this year bring you perfect health, creative energy, and deep, grounding peace." },
-          { id: 8, wish: "I wish that any obstacles you face turn into beautiful stepping stones for your soul." }
+          { id: 1, wish: "I wish your heart always finds a place where it feels safe, understood, and loved exactly the way it deserves. ❤️" },
+          { id: 2, wish: "I hope every dream you've ever whispered to yourself slowly becomes the life you're living one day. ✨" },
+          { id: 3, wish: "May life always surprise you with beautiful moments that make you stop, smile, and think, 'This is exactly where I'm meant to be.' 🌸" },
+          { id: 4, wish: "I hope every morning begins with peace in your heart and every night ends with gratitude and happiness in your soul. ☀️🌙" },
+          { id: 5, wish: "Never let this world change the softness of your heart. It's one of the most beautiful things about you. 💖" },
+          { id: 6, wish: "Whenever life becomes difficult, I hope you always remember how incredibly strong, capable, and wonderful you truly are. 🌼" },
+          { id: 7, wish: "I hope this year brings you countless reasons to laugh until your cheeks hurt and your eyes sparkle even brighter. ✨" },
+          { id: 8, wish: "And if life ever feels heavy, I hope it always sends someone who reminds you just how loved and precious you really are. 🌙" }
         ],
 
         // Background Piano Track Fallback URL (if local music/birthday.mp3 is missing)
@@ -962,7 +962,7 @@
         music: {
           isPlaying: false,
           isMuted: false,
-          volume: 0.5,
+          volume: 0.2,
           useFallback: false
         },
         images: []
@@ -974,7 +974,7 @@
         return {
           id: idx,
           title: `Memory #${idx}`,
-          src: `./image/${idx}.jpg`,
+          src: idx === 13 ? `./image/${idx}.png` : `./image/${idx}.jpg`,
           fallbackSrc: fallbackImages[i % fallbackImages.length]
         };
       });
@@ -1004,13 +1004,27 @@
 
         // Setup Audio Node Source
         const audioNode = document.getElementById("bg-audio");
-        audioNode.src = "./music/birthday.mp3";
+        audioNode.src = "./music/Aashiqui.mp3";
         audioNode.volume = appState.music.volume;
         audioNode.addEventListener("error", handleAudioLoadError);
 
         // Run countdown timer immediately
         calculateBirthdayCountdown();
         setInterval(calculateBirthdayCountdown, 60000); // refresh every minute
+
+        // Music transition observer
+        const finalSection = document.getElementById("final-gift-section");
+        if (finalSection && window.IntersectionObserver) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                transitionToRaabta();
+                observer.disconnect();
+              }
+            });
+          }, { threshold: 0.1 });
+          observer.observe(finalSection);
+        }
 
         // Initialize Lucide icons
         lucide.createIcons();
@@ -1795,6 +1809,49 @@
           audio.muted = false;
         }
         updateMusicUI();
+      }
+
+      function transitionToRaabta() {
+        const audioNode = document.getElementById("bg-audio");
+        if (!audioNode) return;
+        if (audioNode.src.includes("Raabta.mp3")) return;
+
+        // If not actively playing/muted, just swap directly
+        if (!appState.music.isPlaying || appState.music.isMuted || appState.music.volume === 0) {
+          audioNode.src = "./music/Raabta.mp3";
+          if (appState.music.isPlaying) {
+             audioNode.play().catch(e => console.warn(e));
+          }
+          return;
+        }
+
+        // Smooth Crossfade
+        const fadeOutDuration = 1500;
+        const fadeSteps = 15;
+        const stepTime = fadeOutDuration / fadeSteps;
+        const userVol = appState.music.volume;
+        let currentStep = 0;
+
+        const fadeOutInterval = setInterval(() => {
+          currentStep++;
+          audioNode.volume = Math.max(0, userVol * (1 - (currentStep / fadeSteps)));
+
+          if (currentStep >= fadeSteps) {
+            clearInterval(fadeOutInterval);
+            audioNode.src = "./music/Raabta.mp3";
+            audioNode.play().catch(e => console.warn(e));
+            
+            let fadeInStep = 0;
+            const fadeInInterval = setInterval(() => {
+              fadeInStep++;
+              audioNode.volume = Math.min(userVol, userVol * (fadeInStep / fadeSteps));
+              if (fadeInStep >= fadeSteps) {
+                clearInterval(fadeInInterval);
+                audioNode.volume = appState.music.volume; // Sync with any changes made during fade
+              }
+            }, stepTime);
+          }
+        }, stepTime);
       }
 
       // Automatically fallback to SoundHelix serene public piano track if /music/birthday.mp3 fails

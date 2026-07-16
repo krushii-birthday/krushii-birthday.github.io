@@ -50,14 +50,14 @@ window.config = {
   // These will display in a beautiful visual card grid. 
   // You can write whatever you like for each card.
   reasons: [
-    "Your smile brings instant warmth to even the grayest of days. 🌸",
-    "You have a heart of pure gold, treating everyone with deep empathy and kindness. ✨",
-    "How you appreciate the quiet, beautiful little things in life that others might overlook. 🌼",
-    "Your laughter is contagious and has the power to heal and lift up any spirit. 🎵",
-    "You inspire others to be more thoughtful and gentle just by being exactly who you are. ❤️",
-    "The way your eyes light up with passion and wonder when speaking about what you love. 💫",
-    "You carry an innate elegance and a serene, calming presence wherever you go. 🕯️",
-    "Your strength and grace in handling life's complex currents are truly admirable. 🦋"
+    "Your smile has this beautiful way of turning even my ordinary days into something worth remembering. ❤️",
+    "Being around you feels like finding peace after a long, tiring day. You have no idea how comforting your presence is. 🌙",
+    "I love how you find happiness in the smallest little moments. It reminds me that life doesn't have to be perfect to be beautiful. 🌸",
+    "Your laughter is one of my favorite sounds in this world. If I could keep one sound with me forever, it would be yours. ✨",
+    "You make people feel important without even trying, and that's one of the rarest qualities anyone can have. 💖",
+    "The sparkle in your eyes whenever you're genuinely happy is more beautiful than a sky full of stars. ⭐",
+    "No matter where life takes you, I hope you never lose the kindness, warmth, and innocence that make you... you. 🦋",
+    "Out of all the people this world could have given me to know, I'm just grateful it gave me you. 🌹"
   ],
 
   // -------------------------------------------------------------------------
@@ -66,14 +66,14 @@ window.config = {
   // When they tap the glowing stars in the virtual interactive night sky,
   // these exact wishes will slide open.
   wishes: [
-    { id: 1, wish: "May your heart always feel safe, cherished, and deeply loved every single day." },
-    { id: 2, wish: "I wish for you to fulfill every single dream you have, no matter how grand or quiet." },
-    { id: 3, wish: "May your path be paved with wonderful adventures, rich laughter, and sincere friendships." },
-    { id: 4, wish: "I wish you endless peaceful mornings wrapped in cozy blankets with a warm cup of tea." },
-    { id: 5, wish: "May you always find the courage to stay true to your unique, wonderful, magical self." },
-    { id: 6, wish: "I wish for your mind to be free of worries, filled only with inspiration and quiet clarity." },
-    { id: 7, wish: "May this year bring you perfect health, creative energy, and deep, grounding peace." },
-    { id: 8, wish: "I wish that any obstacles you face turn into beautiful stepping stones for your soul." }
+    { id: 1, wish: "I wish your heart always finds a place where it feels safe, understood, and loved exactly the way it deserves. ❤️" },
+    { id: 2, wish: "I hope every dream you've ever whispered to yourself slowly becomes the life you're living one day. ✨" },
+    { id: 3, wish: "May life always surprise you with beautiful moments that make you stop, smile, and think, 'This is exactly where I'm meant to be.' 🌸" },
+    { id: 4, wish: "I hope every morning begins with peace in your heart and every night ends with gratitude and happiness in your soul. ☀️🌙" },
+    { id: 5, wish: "Never let this world change the softness of your heart. It's one of the most beautiful things about you. 💖" },
+    { id: 6, wish: "Whenever life becomes difficult, I hope you always remember how incredibly strong, capable, and wonderful you truly are. 🌼" },
+    { id: 7, wish: "I hope this year brings you countless reasons to laugh until your cheeks hurt and your eyes sparkle even brighter. ✨" },
+    { id: 8, wish: "And if life ever feels heavy, I hope it always sends someone who reminds you just how loved and precious you really are. 🌙" }
   ],
 
   // -------------------------------------------------------------------------
